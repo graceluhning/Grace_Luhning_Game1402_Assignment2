@@ -4,6 +4,7 @@ using DG.Tweening;
 public class ChestInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private Animator anim;
+    [SerializeField] private AudioClip chestSound;
 
     private int isOpenHash;
 
@@ -40,6 +41,7 @@ public class ChestInteractable : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         Debug.Log($"Interacted with {gameObject.name}");
+        AudioSource.PlayClipAtPoint(chestSound, transform.position);
         transform.DOScale(0, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
             Destroy(gameObject);

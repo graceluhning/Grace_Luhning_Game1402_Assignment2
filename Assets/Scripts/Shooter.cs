@@ -7,6 +7,8 @@ public class Shooter : MonoBehaviour
     [SerializeField] private Transform shootPoint;
     [SerializeField] private GameObject projectile;
 
+    [SerializeField] private Market market;
+
     [SerializeField] private float shootForce;
     
     private GameObject _arrow;
@@ -23,7 +25,15 @@ public class Shooter : MonoBehaviour
 
     private void Shoot(InputAction.CallbackContext context)
     {
-       _arrow = Instantiate(projectile, shootPoint.position, shootPoint.rotation);
-       _arrow.GetComponent<Rigidbody>().AddForce(shootForce * shootPoint.forward);
+        if(market._marketOpen)
+        {
+            return;
+        }
+        
+        _arrow = Instantiate(projectile, shootPoint.position, shootPoint.rotation);
+        _arrow.GetComponent<Rigidbody>().AddForce(shootForce * shootPoint.forward);
+       
     }
+    
+    
 }
