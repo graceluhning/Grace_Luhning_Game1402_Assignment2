@@ -5,6 +5,7 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] private InputAction shootInput;
 
+<<<<<<< Updated upstream
     
     [SerializeField] private Transform shootPoint;
     [SerializeField] private Transform aimTrack;
@@ -17,6 +18,19 @@ public class Shooter : MonoBehaviour
     [SerializeField] private GameObject _arrow;
     [SerializeField] private GameObject _spell;
     
+=======
+    [SerializeField] private Transform shootPoint;
+    [SerializeField] private Transform aimTrack;
+    [SerializeField] public GameObject shootObject;
+
+    [SerializeField] private float shootForce;
+
+    [SerializeField] private ShopUILogic shopLogic;
+
+    [SerializeField] private GameObject _arrow;
+    [SerializeField] private GameObject _spell;
+    
+>>>>>>> Stashed changes
     private Vector3 _shootDirection;
     private PlayerState _currentState;
     private PlayerController _playerController;
@@ -68,7 +82,10 @@ public class Shooter : MonoBehaviour
 
     private void Shoot(InputAction.CallbackContext context)
     {
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
         if(_currentState != PlayerState.AIM) return;
 
 
@@ -83,5 +100,9 @@ public class Shooter : MonoBehaviour
      
         shootObject.GetComponent<Rigidbody>().AddForce(shootForce * _shootDirection, ForceMode.Impulse);
     }
+<<<<<<< Updated upstream
 }
 
+=======
+}
+>>>>>>> Stashed changes
