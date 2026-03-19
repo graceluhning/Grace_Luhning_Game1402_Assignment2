@@ -1,10 +1,15 @@
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class ChestInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private Animator anim;
 
+    [SerializeField] private CoinManager coinManager;
+    
+    [SerializeField] private int coins = 10;
+    
     private int isOpenHash;
 
     private Tween _loopTween;
@@ -49,6 +54,7 @@ public class ChestInteractable : MonoBehaviour, IInteractable
 
     void OnDestroy()
     {
+        coinManager.AddCoins(10);
         DOTween.Kill(this.gameObject);
     }
 } 
