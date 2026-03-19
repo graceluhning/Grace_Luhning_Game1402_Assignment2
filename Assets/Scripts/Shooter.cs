@@ -5,13 +5,11 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] private InputAction shootInput;
 
-<<<<<<< Updated upstream
-=======
+    
     [SerializeField] private Transform shootPoint;
     [SerializeField] private Transform aimTrack;
     [SerializeField] public GameObject shootObject;
-
->>>>>>> Stashed changes
+    
     [SerializeField] private float shootForce;
 
     [SerializeField] private ShopUILogic shopLogic;
@@ -70,12 +68,7 @@ public class Shooter : MonoBehaviour
 
     private void Shoot(InputAction.CallbackContext context)
     {
-<<<<<<< Updated upstream
-       _arrow = Instantiate(projectile, shootPoint.position, shootPoint.rotation);
-       _arrow.GetComponent<Rigidbody>().AddForce(shootForce * shootPoint.forward);
-    }
-}
-=======
+    
         if(_currentState != PlayerState.AIM) return;
 
 
@@ -91,4 +84,4 @@ public class Shooter : MonoBehaviour
         shootObject.GetComponent<Rigidbody>().AddForce(shootForce * _shootDirection, ForceMode.Impulse);
     }
 }
->>>>>>> Stashed changes
+

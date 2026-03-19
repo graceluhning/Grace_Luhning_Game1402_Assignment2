@@ -8,7 +8,7 @@ public class ShopUILogic : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     
     [SerializeField] GameObject marketUI;
-    [SerializeField] Market market;
+    [SerializeField] private Market market;
 
     [SerializeField] private Button armorButton;
     [SerializeField] TMP_Text armorText;
