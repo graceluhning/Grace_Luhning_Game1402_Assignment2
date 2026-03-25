@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
-    [SerializeField] public float moveSpeed = 2;
+    [SerializeField] private float moveSpeed = 2;
     [SerializeField] private float rotationSpeed = 10;
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float jumpVelocity = 10f;
@@ -41,8 +41,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 _tempAimTrackerPosition;
 
     private PlayerState _currentState;
-   
-    [SerializeField] GameObject reticle;
 
     public bool IsGrounded()
     {
@@ -53,7 +51,12 @@ public class PlayerController : MonoBehaviour
     {
         return _velocity;
     }
-    
+
+    public void BuyArmor()
+    {
+        moveSpeed = 10;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -71,13 +74,11 @@ public class PlayerController : MonoBehaviour
     {
         if(_currentState==PlayerState.EXPLORE)
         {
-            reticle.SetActive(false);
             CalculateMovementExplore();
             aimTrack.localPosition = _defaultAimTrackerPosition;
         }
         else if(_currentState == PlayerState.AIM)
         {
-            reticle.SetActive(true);
             CalculateMovementAim();
             UpdateAimTrack();
         }

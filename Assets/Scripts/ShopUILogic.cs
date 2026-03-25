@@ -21,18 +21,8 @@ public class ShopUILogic : MonoBehaviour
     [SerializeField] private Button axeButton;
     [SerializeField] TMP_Text axeText;
     public bool axeBought;
-
-    public AudioClip chestSound;
-    public AudioClip nopeSound;
     
-    void Awake() // on awake
-    {
-        armorBought = false;
-        axeBought = false;
-        spellBought = false;
-    }
-    
-    public void exitShop() 
+    public void exitShop()
     {
         marketUI.SetActive(false);
         market._marketOpen = false;
@@ -43,28 +33,25 @@ public class ShopUILogic : MonoBehaviour
         Debug.Log("Exit Shop");
     }
 
-    public void buyArmor() // armor purchase logic
+    public void buyArmor()
     {
         if (armorBought) return;
 
-        if (coinManager.Coins >= 10) // if the player has enough coins
+        if (coinManager.Coins >= 10)
         {
             coinManager.RemoveCoins(10);
-            armorBought = true; // set bool to true
-            playerController.moveSpeed = 12; // upgrade movespeed
+            armorBought = true;
+            playerController.BuyArmor();
 
-            armorText.text = "BOUGHT"; // change UI 
+            armorText.text = "BOUGHT";
             armorButton.interactable = false;
             
             Debug.Log("Bought Armor!");
-            
-            AudioSource.PlayClipAtPoint(chestSound, Camera.main.transform.position); // play audio clip
         }
         
         else
         {
             Debug.Log("Not enough coins!");
-            AudioSource.PlayClipAtPoint(nopeSound, Camera.main.transform.position); // play audio clip
         }
     }
 
@@ -72,22 +59,20 @@ public class ShopUILogic : MonoBehaviour
     {
         if (spellBought) return;
 
-        if (coinManager.Coins >= 20)
+        if (coinManager.Coins >= 10)
         {
-            coinManager.RemoveCoins(20);
+            coinManager.RemoveCoins(10);
             spellBought = true;
 
             spellText.text = "BOUGHT";
             spellButton.interactable = false;
 
             Debug.Log("Bought Spell!");
-            AudioSource.PlayClipAtPoint(chestSound, Camera.main.transform.position);
         }
         
         else
         {
             Debug.Log("Not enough coins!");
-            AudioSource.PlayClipAtPoint(nopeSound, Camera.main.transform.position);
         }
 
     }
@@ -96,26 +81,23 @@ public class ShopUILogic : MonoBehaviour
     {
         if (axeBought) return;
 
-        if (coinManager.Coins >= 30)
+        if (coinManager.Coins >= 10)
         {
-            coinManager.RemoveCoins(30);
+            coinManager.RemoveCoins(10);
             axeBought = true;
-
-            coinManager.coinsPer += 2; // add additional coin to coinsPer function in CoinManager
 
             axeText.text = "BOUGHT";
             axeButton.interactable = false;
 
             Debug.Log("Bought Axe!");
-            AudioSource.PlayClipAtPoint(chestSound, Camera.main.transform.position);
         }
         
         else
         {
             Debug.Log("Not enough coins!");
-            AudioSource.PlayClipAtPoint(nopeSound, Camera.main.transform.position);
         }
 
     }
+    
     
 }

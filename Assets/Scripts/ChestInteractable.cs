@@ -1,6 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
-
+using TMPro;
 
 public class ChestInteractable : MonoBehaviour, IInteractable
 {
@@ -8,20 +8,18 @@ public class ChestInteractable : MonoBehaviour, IInteractable
 
     [SerializeField] private CoinManager coinManager;
     
-    [SerializeField] private int coins = 5;
-
-    public AudioClip chestSound;
+    [SerializeField] private int coins = 10;
     
     private int isOpenHash;
 
     private Tween _loopTween;
     private Tween _collectTween;
 
-    void Start() 
+    void Start()
     {
         if(!anim) return;
 
-        isOpenHash = Animator.StringToHash("IsOpen"); 
+        isOpenHash = Animator.StringToHash("IsOpen");
         
         transform.DOScale(2f, 0.5f).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.InOutQuad);
     }
@@ -31,7 +29,7 @@ public class ChestInteractable : MonoBehaviour, IInteractable
         Debug.Log("Interact in!");
         anim?.SetBool(isOpenHash, true);
 
-        
+        // TODO - Show UI
         Toast.Instance.ShowToast("Press \"E\" To Interact!");
     }
 
@@ -39,7 +37,8 @@ public class ChestInteractable : MonoBehaviour, IInteractable
     {
         anim?.SetBool(isOpenHash, false);
         Debug.Log("Interact out!");
-        
+
+        // TODO - Hide UI
         Toast.Instance.HideToast();
     }
 
@@ -48,7 +47,6 @@ public class ChestInteractable : MonoBehaviour, IInteractable
         Debug.Log($"Interacted with {gameObject.name}");
         transform.DOScale(0, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
-            AudioSource.PlayClipAtPoint(chestSound, transform.position);
             Destroy(gameObject);
         });
 
@@ -56,7 +54,7 @@ public class ChestInteractable : MonoBehaviour, IInteractable
 
     void OnDestroy()
     {
-        coinManager.AddCoins(coins);
+        coinManager.AddCoins(10);
         DOTween.Kill(this.gameObject);
     }
 } 

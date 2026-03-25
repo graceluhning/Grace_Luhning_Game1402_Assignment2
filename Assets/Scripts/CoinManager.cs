@@ -8,35 +8,28 @@ public class CoinManager : MonoBehaviour
     public int Coins;
     public TextMeshProUGUI coinText;
 
-    public int coinsPer = 2;
-
     private void Awake()
     {
         Debug.Log("Created CoinManager");
         
         Instance = this;
+        DontDestroyOnLoad(gameObject);
         
     }
-    private void Start() // set coin UI on start
+    private void Start()
     {
         UpdateCoinUI();
     }
-    
+
+
     public void AddCoins(int amount)
     {
         Coins += amount;
-        UpdateCoinUI(); // chest addcoins function
+        UpdateCoinUI();
         
     }
 
-    public void AddCoins()
-    {
-        Coins += coinsPer;
-        UpdateCoinUI(); // balloons addcoins function
-        
-    }
-
-    public void RemoveCoins(int amount) // remove coins when something is bought function
+    public void RemoveCoins(int amount)
     {
         Coins -= amount;
         if (Coins < 0) Coins = 0;
@@ -44,12 +37,11 @@ public class CoinManager : MonoBehaviour
 
     }
     
-    private void UpdateCoinUI() // updates the coin UI
+    private void UpdateCoinUI()
     {
         if (coinText != null)
         {
             coinText.text = "COINS: " + Coins;
         }
     }
-    
 }
