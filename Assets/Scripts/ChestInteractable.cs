@@ -8,8 +8,6 @@ public class ChestInteractable : MonoBehaviour, IInteractable
 
     [SerializeField] private CoinManager coinManager;
     
-    [SerializeField] private int coins = 10;
-    
     private int isOpenHash;
 
     private Tween _loopTween;
@@ -54,7 +52,7 @@ public class ChestInteractable : MonoBehaviour, IInteractable
 
     void OnDestroy()
     {
-        coinManager.AddCoins(10);
+        coinManager.AddCoins(5);
         DOTween.Kill(this.gameObject);
     }
 } 

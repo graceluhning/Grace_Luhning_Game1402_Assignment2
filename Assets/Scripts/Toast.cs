@@ -10,7 +10,7 @@ public class Toast : MonoBehaviour
 
     void Awake()
     {
-        //simple singleton pattern
+        
         if(Instance != null && Instance != this)
         {
             Destroy(this);

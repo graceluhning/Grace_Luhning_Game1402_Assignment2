@@ -8,6 +8,8 @@ public class CoinManager : MonoBehaviour
     public int Coins;
     public TextMeshProUGUI coinText;
 
+    public int coinsPer = 2;
+
     private void Awake()
     {
         Debug.Log("Created CoinManager");
@@ -25,6 +27,13 @@ public class CoinManager : MonoBehaviour
     public void AddCoins(int amount)
     {
         Coins += amount;
+        UpdateCoinUI();
+        
+    }
+    
+    public void AddCoins()
+    {
+        Coins += coinsPer;
         UpdateCoinUI();
         
     }

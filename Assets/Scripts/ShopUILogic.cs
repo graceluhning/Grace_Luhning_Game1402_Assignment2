@@ -21,6 +21,9 @@ public class ShopUILogic : MonoBehaviour
     [SerializeField] private Button axeButton;
     [SerializeField] TMP_Text axeText;
     public bool axeBought;
+
+    [SerializeField] private AudioClip nopeSound;
+    [SerializeField] private AudioClip boughtSound;
     
     public void exitShop()
     {
@@ -42,16 +45,20 @@ public class ShopUILogic : MonoBehaviour
             coinManager.RemoveCoins(10);
             armorBought = true;
             playerController.BuyArmor();
+            
+           
 
             armorText.text = "BOUGHT";
             armorButton.interactable = false;
             
             Debug.Log("Bought Armor!");
+            AudioSource.PlayClipAtPoint(boughtSound, Vector3.zero);
         }
         
         else
         {
             Debug.Log("Not enough coins!");
+            AudioSource.PlayClipAtPoint(nopeSound, Vector3.zero);
         }
     }
 
@@ -59,20 +66,23 @@ public class ShopUILogic : MonoBehaviour
     {
         if (spellBought) return;
 
-        if (coinManager.Coins >= 10)
+        if (coinManager.Coins >= 20)
         {
-            coinManager.RemoveCoins(10);
+            coinManager.RemoveCoins(20);
             spellBought = true;
 
             spellText.text = "BOUGHT";
             spellButton.interactable = false;
 
             Debug.Log("Bought Spell!");
+            AudioSource.PlayClipAtPoint(boughtSound, Vector3.zero);
         }
         
         else
         {
+            
             Debug.Log("Not enough coins!");
+            AudioSource.PlayClipAtPoint(nopeSound, Vector3.zero);
         }
 
     }
@@ -81,20 +91,24 @@ public class ShopUILogic : MonoBehaviour
     {
         if (axeBought) return;
 
-        if (coinManager.Coins >= 10)
+        if (coinManager.Coins >= 30)
         {
-            coinManager.RemoveCoins(10);
+            coinManager.RemoveCoins(30);
             axeBought = true;
 
             axeText.text = "BOUGHT";
             axeButton.interactable = false;
 
+            coinManager.coinsPer += 2;
+
             Debug.Log("Bought Axe!");
+            AudioSource.PlayClipAtPoint(boughtSound, Vector3.zero);
         }
         
         else
         {
             Debug.Log("Not enough coins!");
+            AudioSource.PlayClipAtPoint(nopeSound, Vector3.zero);
         }
 
     }

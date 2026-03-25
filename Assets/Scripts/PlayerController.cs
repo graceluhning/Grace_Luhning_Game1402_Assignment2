@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _tempAimTrackerPosition;
 
     private PlayerState _currentState;
+    [SerializeField] private GameObject reticle;
 
     public bool IsGrounded()
     {
@@ -51,10 +53,10 @@ public class PlayerController : MonoBehaviour
     {
         return _velocity;
     }
-
+    
     public void BuyArmor()
     {
-        moveSpeed = 10;
+        moveSpeed = 12;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -124,6 +126,8 @@ public class PlayerController : MonoBehaviour
 
         if(_currentState == PlayerState.AIM)
         {
+            reticle.SetActive(true);
+            
             _camForward = playerCamera.transform.forward;
             _camForward.y = 0;
             _camForward.Normalize();

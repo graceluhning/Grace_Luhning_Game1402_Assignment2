@@ -9,6 +9,14 @@ public class Spell : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         Invoke(nameof(DestroyAfter), 5f);
     }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Balloon") || collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()

@@ -209,9 +209,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6511818716047272438}
-  - component: {fileID: 8379475271614180362}
   - component: {fileID: 6291161282353107356}
   - component: {fileID: 588085526588258904}
+  - component: {fileID: 1095140624848097926}
   m_Layer: 0
   m_Name: BALLOON
   m_TagString: Balloon
@@ -236,19 +236,6 @@ Transform:
   - {fileID: 3769778933108129931}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8379475271614180362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3915945117715342563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5fc46fcc2c691843bc3ea6866415045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  coinManager: {fileID: 0}
 --- !u!136 &6291161282353107356
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -299,3 +286,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1095140624848097926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3915945117715342563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22799539b5d62440b76bd463f7e4b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Balloon
+  coinManager: {fileID: 0}
+  spawner: {fileID: 0}
+  popSound: {fileID: 8300000, guid: 4f7169bc7005d224298b66c06292d420, type: 3}

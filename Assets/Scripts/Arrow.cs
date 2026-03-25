@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
@@ -8,6 +9,14 @@ public class Arrow : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         Invoke(nameof(DestroyAfter), 3f);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Balloon") || collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

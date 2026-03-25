@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565737407111541208, guid: 8dd71062b4b92874ab46d26e4b03116f, type: 3}
       propertyPath: coins
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4565737407111541208, guid: 8dd71062b4b92874ab46d26e4b03116f, type: 3}
       propertyPath: chestSound
@@ -1230,7 +1230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565737407111541208, guid: 8dd71062b4b92874ab46d26e4b03116f, type: 3}
       propertyPath: coins
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4565737407111541208, guid: 8dd71062b4b92874ab46d26e4b03116f, type: 3}
       propertyPath: chestSound
@@ -2961,7 +2961,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.70211816, g: 0.7141816, b: 0.9245283, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -3810,7 +3810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   Coins: 0
   coinText: {fileID: 0}
-  coinsPer: 1
+  coinsPer: 2
 --- !u!114 &546637313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4655,8 +4655,8 @@ MonoBehaviour:
   axeButton: {fileID: 884894451}
   axeText: {fileID: 87408432}
   axeBought: 0
-  chestSound: {fileID: 8300000, guid: 3647de4b847d89346918991921313228, type: 3}
   nopeSound: {fileID: 8300000, guid: 619a6889d06691e41ac6694a23fc6b28, type: 3}
+  boughtSound: {fileID: 8300000, guid: 3647de4b847d89346918991921313228, type: 3}
 --- !u!1 &685901289
 GameObject:
   m_ObjectHideFlags: 0
@@ -6460,7 +6460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565737407111541208, guid: 8dd71062b4b92874ab46d26e4b03116f, type: 3}
       propertyPath: coins
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4565737407111541208, guid: 8dd71062b4b92874ab46d26e4b03116f, type: 3}
       propertyPath: chestSound
@@ -8198,7 +8198,7 @@ Terrain:
   m_GameObject: {fileID: 1630720414}
   m_Enabled: 1
   serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: 9ea2e7ecb9b352e4f9b0ddd94964207c, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 4bd24c70ce7b6a14080beecf3c31d7db, type: 2}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -9646,12 +9646,10 @@ MonoBehaviour:
     m_Flags: 0
   shootPoint: {fileID: 1697469081}
   aimTrack: {fileID: 2017893165}
-  shootObject: {fileID: 0}
-  projectile: {fileID: 0}
-  shootForce: 3
   shopLogic: {fileID: 683799124}
   _arrow: {fileID: 357988172648956926, guid: 7715d1f56281c6a4b8158536f3469f61, type: 3}
-  _spell: {fileID: 5349306450361139545, guid: 0925a423f40dcae46b909eb39b66dd62, type: 3}
+  _spell: {fileID: 5587229417694059429, guid: 0925a423f40dcae46b909eb39b66dd62, type: 3}
+  shootForce: 3
 --- !u!1 &1910740811
 GameObject:
   m_ObjectHideFlags: 0
