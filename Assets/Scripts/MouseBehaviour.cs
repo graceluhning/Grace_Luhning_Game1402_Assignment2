@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MouseBehaviour : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         ShowMouse(false);
@@ -10,7 +10,7 @@ public class MouseBehaviour : MonoBehaviour
 
     public void ShowMouse(bool value)
     {
-        Cursor.visible = value;
+        Cursor.visible = value; // enable mouse on showmouse called
         Cursor.lockState = value ?  CursorLockMode.Locked : CursorLockMode.None;
     }
 }
