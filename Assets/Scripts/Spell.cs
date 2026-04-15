@@ -3,7 +3,7 @@ using UnityEngine;
 public class Spell : MonoBehaviour
 {
     private Rigidbody _rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public EnemyHealth enemyHealth;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -15,6 +15,20 @@ public class Spell : MonoBehaviour
         if (collision.gameObject.CompareTag("Balloon") || collision.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(7);
+                DestroyAfter();
+                Debug.Log("Enemy Took Damage!");
+            }
         }
     }
 

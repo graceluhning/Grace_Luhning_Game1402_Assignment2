@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxAimHeight;
     [SerializeField] private float minAimHeight;
 
-
     [Space(10)]
     [Header("Ground Check")]
     [SerializeField] private Vector3 groundCheckOffset;

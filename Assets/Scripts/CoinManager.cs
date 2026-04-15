@@ -20,6 +20,7 @@ public class CoinManager : MonoBehaviour
     }
     private void Start()
     {
+        Coins = 0;
         UpdateCoinUI();
     }
 

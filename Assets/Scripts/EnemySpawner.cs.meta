@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a7b3cab2af5408543b5aa46ba2736ab2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - slimeEnemy: {fileID: 3252470392314359611, guid: 48796f68c1150344b8e342b4b1673a28, type: 3}
+  - spikeEnemy: {fileID: 1266360554715438228, guid: 9627ac6f78d76694a906e4971db6d752, type: 3}
+  - bossEnemy: {fileID: 7344940197164502793, guid: 4e222da887e41a147a4c1bce8b953e83, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

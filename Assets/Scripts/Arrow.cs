@@ -4,7 +4,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     private Rigidbody _rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public EnemyHealth enemyHealth;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -18,8 +18,21 @@ public class Arrow : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    // Update is called once per frame
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(5);
+                DestroyAfter();
+                Debug.Log("Enemy Took Damage!");
+            }
+        }
+    }
+    
     void FixedUpdate()
     {
         _rb.rotation = Quaternion.LookRotation(_rb.linearVelocity);
