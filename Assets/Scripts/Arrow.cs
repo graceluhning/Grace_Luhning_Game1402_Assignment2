@@ -5,10 +5,10 @@ public class Arrow : MonoBehaviour
 {
     private Rigidbody _rb;
     public EnemyHealth enemyHealth;
+    public int currentHealth;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        Invoke(nameof(DestroyAfter), 3f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,14 +21,25 @@ public class Arrow : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Balloon") || other.CompareTag("Ground"))
+        {
+            DestroyAfter();
+        }
+        
         if (other.CompareTag("Enemy"))
         {
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(5);
-                DestroyAfter();
                 Debug.Log("Enemy Took Damage!");
+
+                if (enemyHealth.currentHealth <= 0)
+                {
+                    DestroyAfter();
+                }
+                
             }
         }
     }

@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChestInteractable
   anim: {fileID: 7435185083291266052}
+  coinManager: {fileID: 0}
+  chestSound: {fileID: 8300000, guid: 3647de4b847d89346918991921313228, type: 3}
 --- !u!1 &5882926020060303202
 GameObject:
   m_ObjectHideFlags: 0

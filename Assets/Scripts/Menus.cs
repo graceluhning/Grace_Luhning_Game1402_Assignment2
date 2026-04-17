@@ -16,7 +16,6 @@ public class Menus : MonoBehaviour
     Cursor.visible = true;
     Cursor.lockState = CursorLockMode.None;
     _isPaused = false;
-    
     pauseUI.SetActive(false);
     gameOverUI.SetActive(false);
     gameWonUI.SetActive(false);

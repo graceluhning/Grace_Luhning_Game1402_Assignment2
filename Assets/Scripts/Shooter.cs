@@ -16,6 +16,8 @@ public class Shooter : MonoBehaviour
     private Vector3 _shootDirection;
     private PlayerState _currentState;
     private PlayerController _playerController;
+    
+    [SerializeField] private AudioClip shootSound;
 
     void Awake()
     {
@@ -72,6 +74,8 @@ public class Shooter : MonoBehaviour
         if (_currentState != PlayerState.AIM) return;
 
         _shootDirection = (aimTrack.position - shootPoint.position).normalized;
+            
+        AudioSource.PlayClipAtPoint(shootSound, Vector3.zero);
 
         GameObject projectile = Instantiate(shootObject, shootPoint.position, Quaternion.LookRotation(_shootDirection)); // get shoot object at position
 

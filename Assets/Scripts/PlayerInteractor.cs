@@ -3,11 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteractor : MonoBehaviour
 {
-    // Input
     [SerializeField] private InputAction interactionInput;
 
     private IInteractable _interactable;
-    private IInteractable _tempInteractable;
 
     void OnEnable()
     {
@@ -18,22 +16,24 @@ public class PlayerInteractor : MonoBehaviour
     void OnDisable()
     {
         interactionInput.performed -= Interact;
+        interactionInput.Disable();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        _tempInteractable = other.GetComponent<IInteractable>();
+        _interactable = other.GetComponent<IInteractable>();
 
-        if(_tempInteractable == null) return;
+        if (_interactable == null) return;
 
-        _interactable = _tempInteractable;
-        _interactable?.OnHoverIn();
+        _interactable.OnHoverIn();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _interactable?.OnHoverOff();
-        _interactable = null;        
+        if (_interactable == null) return;
+
+        _interactable.OnHoverOff();
+        _interactable = null;
     }
 
     private void Interact(InputAction.CallbackContext context)

@@ -107,7 +107,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d68d27bff988ca48b2c19e6c872222e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spell
+  enemyHealth: {fileID: 0}
 --- !u!54 &-7594863626101164718
 Rigidbody:
   m_ObjectHideFlags: 0

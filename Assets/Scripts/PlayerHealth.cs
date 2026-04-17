@@ -4,6 +4,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
+    
+    [SerializeField] private Menus menus;
     void Start()
     {
         currentHealth = maxHealth;
@@ -14,6 +16,11 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         
+        if (currentHealth <= 0)
+        {
+            menus.GameOver();
+        }
     }
+    
     
 }

@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        reticle.SetActive(false);
 
         //set the default state
         _currentState = PlayerState.EXPLORE;
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         if(_currentState==PlayerState.EXPLORE)
         {
+            reticle.SetActive(false);
             CalculateMovementExplore();
             aimTrack.localPosition = _defaultAimTrackerPosition;
         }

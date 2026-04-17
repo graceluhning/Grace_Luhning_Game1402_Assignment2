@@ -7,7 +7,6 @@ public class Spell : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        Invoke(nameof(DestroyAfter), 5f);
     }
     
     private void OnCollisionEnter(Collision collision)

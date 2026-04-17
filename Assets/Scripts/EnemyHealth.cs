@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
 
     public CoinManager coinManager;
     
+    [SerializeField] private AudioClip deathSound;
+    
     
     void Awake()
     {
@@ -42,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
         
         if(currentHealth <= 0)
         {
+            AudioSource.PlayClipAtPoint(deathSound, Vector3.zero);
             EnemyAnimator.SetBool("Attack", false);
             EnemyAnimator.SetBool("Idle", false);
             EnemyAnimator.SetBool("Walk", false);

@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: dec4192373f6c2046967826cfe7676ca
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - agent: {instanceID: 0}
+  - playerTransform: {instanceID: 0}
+  - EnemyAnimator: {instanceID: 0}
+  - deathSound: {fileID: 8300000, guid: 4b6c02f97c26e8347ba591a1facd406d, type: 3}
+  - headCollider: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

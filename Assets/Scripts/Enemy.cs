@@ -15,11 +15,13 @@ public class Enemy : MonoBehaviour
     private EnemyState _currentState;
     private Transform _currentTarget;
     private bool _isWaiting = false;
-
+    
     [SerializeField] private Collider headCollider;
     
     void Awake()
     {
+       
+        StartCoroutine(WaitAndChooseARandomPointAndMove(3));
         
         if (headCollider == null)
             headCollider = GetComponent<Collider>();
@@ -27,7 +29,7 @@ public class Enemy : MonoBehaviour
         headCollider.enabled = false;
         
         if (EnemyAnimator == null)
-            EnemyAnimator = GetComponent<Animator>();
+            EnemyAnimator = GetComponentInChildren<Animator>();
         
         if(agent == null)
             agent = GetComponent<NavMeshAgent>();
@@ -54,9 +56,6 @@ public class Enemy : MonoBehaviour
             EnemyAnimator.SetBool("Chase", false);
             headCollider.enabled = false;
             
-            if(!_isWaiting)
-                StartCoroutine(WaitAndChooseARandomPointAndMove(3));
-            
             if(IsPlayerInRange() && IsInFOV())
             {
                 _currentState = EnemyState.CHASE;
@@ -64,17 +63,19 @@ public class Enemy : MonoBehaviour
         }
         else if(_currentState == EnemyState.PATROL)
         {
-            if(agent.remainingDistance <= .2f)
-            {
-                _currentState = EnemyState.IDLE;
+           
                 EnemyAnimator.SetBool("Attack", false);
                 EnemyAnimator.SetBool("Idle", false);
                 EnemyAnimator.SetBool("Walk", true);
                 EnemyAnimator.SetBool("Chase", false);
                 headCollider.enabled = false;
-            }
-
             
+                if (!agent.pathPending &&
+                    agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    ChooseARandomPointAndMove();
+                }
+                
             if(IsPlayerInRange() && IsInFOV())
             {
                 _currentState = EnemyState.CHASE;
@@ -106,6 +107,8 @@ public class Enemy : MonoBehaviour
             EnemyAnimator.SetBool("Chase", false);
             EnemyAnimator.SetBool("Idle", false);
             EnemyAnimator.SetBool("Walk", false);
+            
+            
             headCollider.enabled = true;
 
             float distance = Vector3.Distance(transform.position, playerTransform.position);
@@ -119,7 +122,7 @@ public class Enemy : MonoBehaviour
         }
 
         else if (_currentState == EnemyState.DIE)
-        {
+        { 
             EnemyAnimator.SetBool("Die", true);
         }
     }
@@ -129,15 +132,11 @@ public class Enemy : MonoBehaviour
         _isWaiting = true;
         Debug.Log("Waiting to choose a random point");
         yield return new WaitForSeconds(timeToWait);
+
         _currentState = EnemyState.PATROL;
-        EnemyAnimator.SetBool("Attack", false);
-        EnemyAnimator.SetBool("Idle", true);
-        EnemyAnimator.SetBool("Walk", false);
-        EnemyAnimator.SetBool("Chase", false);
         ChooseARandomPointAndMove();
         _isWaiting = false;
     }
-
 
     private void ChooseARandomPointAndMove()
     {

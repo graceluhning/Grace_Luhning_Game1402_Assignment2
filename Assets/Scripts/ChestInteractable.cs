@@ -12,6 +12,9 @@ public class ChestInteractable : MonoBehaviour, IInteractable
 
     private Tween _loopTween;
     private Tween _collectTween;
+    
+    [SerializeField] private AudioClip chestSound;
+    
 
     void Start()
     {
@@ -45,6 +48,7 @@ public class ChestInteractable : MonoBehaviour, IInteractable
         Debug.Log($"Interacted with {gameObject.name}");
         transform.DOScale(0, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
         {
+            AudioSource.PlayClipAtPoint(chestSound, Vector3.zero);
             Destroy(gameObject);
         });
 

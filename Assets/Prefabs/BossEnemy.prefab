@@ -47,7 +47,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 6
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -82,7 +82,7 @@ MonoBehaviour:
   giveUpDistance: 13
   chaseCheckAngle: 60
   EnemyAnimator: {fileID: 4034295815347333445}
-  headCollider: {fileID: 0}
+  headCollider: {fileID: 3327190123292053948}
 --- !u!65 &7258510677887296683
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -98,11 +98,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.86, y: 1.56, z: 0.9}
+  m_Size: {x: 1.65, y: 1.56, z: 0.9}
   m_Center: {x: 0, y: 0.33, z: 0}
 --- !u!114 &4508025491995816005
 MonoBehaviour:
@@ -117,9 +117,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   EnemyAnimator: {fileID: 4034295815347333445}
-  maxHealth: 30
+  maxHealth: 25
   currentHealth: 0
   coinManager: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 4b6c02f97c26e8347ba591a1facd406d, type: 3}
 --- !u!95 &-4069524576603603685
 Animator:
   serializedVersion: 7
@@ -153,6 +154,10 @@ PrefabInstance:
     - target: {fileID: 100014, guid: d9a1483b77bf10e4e851678ab6c2e54e, type: 3}
       propertyPath: m_Name
       value: DogPBR
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: d9a1483b77bf10e4e851678ab6c2e54e, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: d9a1483b77bf10e4e851678ab6c2e54e, type: 3}
       propertyPath: m_LocalScale.x
@@ -262,7 +267,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -282,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttacker
   headCollider: {fileID: 3327190123292053948}
   playerHealth: {fileID: 0}
-  damageAmount: 20
+  damageAmount: 10
 --- !u!95 &4034295815347333445 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: d9a1483b77bf10e4e851678ab6c2e54e, type: 3}
